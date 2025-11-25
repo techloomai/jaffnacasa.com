@@ -5,6 +5,7 @@ import { IconType } from "react-icons";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FiMapPin, FiPhone, FiMail } from "react-icons/fi";
 import { MapPin, Phone, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function ContactSection() {
   const [selected, setSelected] = useState(0);
@@ -151,6 +152,23 @@ const AddressFeature = () => (
         <p className="text-sm text-neutral-light/80 mt-6">
           Easily accessible from major attractions in Jaffna
         </p>
+        <div className="mt-6">
+          <Button
+            variant="outline"
+            size="lg"
+            asChild
+            className="border-white text-white hover:bg-white hover:text-primary"
+          >
+            <a
+              href="https://maps.app.goo.gl/R6QjdgCoJw1ePQZo6"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MapPin className="h-5 w-5 mr-2" />
+              View on Google Maps
+            </a>
+          </Button>
+        </div>
       </div>
     }
   />
@@ -173,6 +191,32 @@ const PhoneFeature = () => (
         <p className="text-sm text-neutral-light/80 mt-6">
           Available for guest support and bookings
         </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
+          <Button
+            size="lg"
+            asChild
+            className="bg-accent hover:bg-accent-light text-white"
+          >
+            <a href="tel:+94701188111">
+              <Phone className="h-5 w-5 mr-2" />
+              Call Now
+            </a>
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            asChild
+            className="border-white text-white hover:bg-white hover:text-primary"
+          >
+            <a
+              href="https://wa.me/94701188111"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </a>
+          </Button>
+        </div>
       </div>
     }
   />
@@ -195,6 +239,18 @@ const EmailFeature = () => (
         <p className="text-sm text-neutral-light/80 mt-6">
           Send us your booking inquiries and questions
         </p>
+        <div className="mt-6">
+          <Button
+            size="lg"
+            asChild
+            className="bg-accent hover:bg-accent-light text-white"
+          >
+            <a href="mailto:jaffnacasasandilipay@gmail.com?subject=Jaffna Casa Booking Inquiry">
+              <Mail className="h-5 w-5 mr-2" />
+              Send Email
+            </a>
+          </Button>
+        </div>
       </div>
     }
   />
