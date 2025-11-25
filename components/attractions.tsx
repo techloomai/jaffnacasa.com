@@ -29,7 +29,7 @@ export function Attractions() {
   };
 
   return (
-    <section className="overflow-hidden bg-neutral-light px-4 py-12">
+    <section className="overflow-hidden bg-neutral-light px-4 pt-12 pb-12">
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 flex flex-col sm:flex-row justify-between gap-4">
           <h2 className="text-4xl font-bold leading-[1.2] text-primary md:text-5xl">

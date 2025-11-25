@@ -6,12 +6,9 @@ import { Users, Home, Calendar, Wind, UtensilsCrossed } from "lucide-react";
 
 export function RoomsHighlights() {
   return (
-    <>
-      <div className="relative h-fit bg-neutral-light">
-        <Features />
-      </div>
-      <div className="h-[50vh] bg-background" />
-    </>
+    <div className="relative h-fit bg-neutral-light">
+      <Features />
+    </div>
   );
 };
 
