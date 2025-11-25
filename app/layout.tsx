@@ -61,6 +61,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: `${siteName} - Fine Stay in Jaffna`,
+        type: "image/png",
       },
     ],
   },
