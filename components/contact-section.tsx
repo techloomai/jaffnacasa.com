@@ -118,7 +118,7 @@ interface ContactFeatureProps {
 
 const ContactFeature = ({ Icon, content }: ContactFeatureProps) => (
   <div className="w-full px-0 py-8 md:px-8">
-    <div className="relative h-96 w-full rounded-xl bg-primary shadow-xl overflow-hidden">
+    <div className="relative h-[550px] w-full rounded-xl bg-primary shadow-xl overflow-hidden">
       <div className="flex w-full gap-1.5 rounded-t-xl bg-primary-dark p-3">
         <div className="h-3 w-3 rounded-full bg-red-500" />
         <div className="h-3 w-3 rounded-full bg-yellow-500" />
