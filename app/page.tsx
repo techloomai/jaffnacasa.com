@@ -11,19 +11,20 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <SideStaggerNavigation />
-      <Header />
-      <section id="home">
-        <HeroComingSoon />
-      </section>
-      <CountdownNotify />
-      <section id="rooms">
-        <RoomsHighlights />
-      </section>
-      <section id="attractions">
-        <Attractions />
-      </section>
-      <ContactSection />
-      <Footer />
+      <Header>
+        <section id="home">
+          <HeroComingSoon />
+        </section>
+        <CountdownNotify />
+        <section id="rooms">
+          <RoomsHighlights />
+        </section>
+        <section id="attractions">
+          <Attractions />
+        </section>
+        <ContactSection />
+        <Footer />
+      </Header>
     </main>
   );
 }
