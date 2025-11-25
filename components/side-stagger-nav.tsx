@@ -35,7 +35,8 @@ export function SideStaggerNavigation() {
         mouseY.set(Infinity);
         setIsHovered(false);
       }}
-      className="fixed right-0 top-0 z-50 flex h-screen flex-col items-end justify-between py-4 pl-8 pointer-events-none"
+      className="fixed right-0 top-0 z-50 flex h-screen flex-col items-end justify-between py-4 pl-8"
+      style={{ pointerEvents: "auto" }}
     >
       {Array.from(Array(NUM_LINES).keys()).map((i) => {
         const linkContent = navItems.find((item) => item.position === i + 1);
@@ -78,17 +79,17 @@ const LinkLine = ({
   });
 
   // Styles for non-link lines
-  const lineWidthRaw = useTransform(distance, [-80, 0, 80], [15, 100, 15]);
+  const lineWidthRaw = useTransform(distance, [-80, 0, 80], [40, 180, 40]);
   const lineWidth = useSpring(lineWidthRaw, SPRING_OPTIONS);
 
   // Styles for link lines
-  const linkWidth = useSpring(25, SPRING_OPTIONS);
+  const linkWidth = useSpring(50, SPRING_OPTIONS);
 
   useEffect(() => {
     if (isHovered) {
-      linkWidth.set(150);
+      linkWidth.set(200);
     } else {
-      linkWidth.set(25);
+      linkWidth.set(50);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isHovered]);
@@ -105,7 +106,7 @@ const LinkLine = ({
 
   if (title && href) {
     return (
-      <a href={href} onClick={handleClick} className="pointer-events-auto">
+      <a href={href} onClick={handleClick} className="block">
         <motion.div
           ref={ref}
           className="group relative bg-primary/40 transition-colors hover:bg-accent"
