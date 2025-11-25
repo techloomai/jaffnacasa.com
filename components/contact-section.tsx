@@ -1,6 +1,14 @@
-import { Phone, Mail, MapPin } from "lucide-react";
+"use client";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { IconType } from "react-icons";
+import { Dispatch, SetStateAction, useState } from "react";
+import { FiMapPin, FiPhone, FiMail } from "react-icons/fi";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 export function ContactSection() {
+  const [selected, setSelected] = useState(0);
+
   return (
     <section id="contact" className="py-16 bg-neutral-light">
       <div className="container mx-auto px-4">
@@ -13,64 +21,199 @@ export function ContactSection() {
           </p>
         </div>
 
-        <div className="max-w-2xl mx-auto">
-          {/* Contact Information */}
-          <div className="bg-background rounded-lg p-6 shadow-sm">
-            <h3 className="text-xl font-semibold text-primary mb-6">
-              Guest Support
-            </h3>
+        <div className="mx-auto max-w-5xl">
+          <Tabs selected={selected} setSelected={setSelected} />
 
-            <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="p-2 bg-accent/10 rounded-lg">
-                  <MapPin className="h-5 w-5 text-accent" />
-                </div>
-                <div>
-                  <p className="font-medium text-foreground mb-1">Address</p>
-                  <p className="text-foreground/70">
-                    Seerani Junction, Keerimalai Road,
-                    <br />
-                    Sandilipay, Jaffna – 40098,
-                    <br />
-                    Sri Lanka
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="p-2 bg-accent/10 rounded-lg">
-                  <Phone className="h-5 w-5 text-accent" />
-                </div>
-                <div>
-                  <p className="font-medium text-foreground mb-1">Phone</p>
-                  <a
-                    href="tel:+94701188111"
-                    className="text-accent hover:underline"
-                  >
-                    +94 70 11 88 111
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="p-2 bg-accent/10 rounded-lg">
-                  <Mail className="h-5 w-5 text-accent" />
-                </div>
-                <div>
-                  <p className="font-medium text-foreground mb-1">Email</p>
-                  <a
-                    href="mailto:jaffnacasasandilipay@gmail.com"
-                    className="text-accent hover:underline"
-                  >
-                    jaffnacasasandilipay@gmail.com
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <AnimatePresence mode="wait">
+            {CONTACT_FEATURES.map((tab, index) => {
+              return selected === index ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  key={index}
+                >
+                  <tab.Feature />
+                </motion.div>
+              ) : undefined;
+            })}
+          </AnimatePresence>
         </div>
       </div>
     </section>
   );
 }
 
+interface TabsProps {
+  selected: number;
+  setSelected: Dispatch<SetStateAction<number>>;
+}
+
+const Tabs = ({ selected, setSelected }: TabsProps) => {
+  return (
+    <div className="flex overflow-x-scroll">
+      {CONTACT_FEATURES.map((tab, index) => {
+        return (
+          <Tab
+            key={index}
+            setSelected={setSelected}
+            selected={selected === index}
+            Icon={tab.Icon}
+            title={tab.title}
+            tabNum={index}
+          />
+        );
+      })}
+    </div>
+  );
+};
+
+interface TabProps {
+  selected: boolean;
+  Icon: IconType;
+  title: string;
+  setSelected: Function;
+  tabNum: number;
+}
+
+const Tab = ({ selected, Icon, title, setSelected, tabNum }: TabProps) => {
+  return (
+    <div className="relative w-full">
+      <button
+        onClick={() => setSelected(tabNum)}
+        className="relative z-0 flex w-full flex-row items-center justify-center gap-4 border-b-4 border-neutral-dark bg-white p-6 transition-colors hover:bg-neutral-light md:flex-col"
+      >
+        <span
+          className={`rounded-lg bg-gradient-to-br from-primary from-10% to-primary-dark p-3 text-2xl text-white shadow-accent/30 transition-all duration-300 ${
+            selected
+              ? "scale-100 opacity-100 shadow-lg"
+              : "scale-90 opacity-50 shadow"
+          }`}
+        >
+          <Icon />
+        </span>
+        <span
+          className={`min-w-[150px] max-w-[200px] text-start text-xs text-foreground transition-opacity md:text-center ${
+            selected ? "opacity-100 font-semibold" : "opacity-50"
+          }`}
+        >
+          {title}
+        </span>
+      </button>
+      {selected && (
+        <motion.span
+          layoutId="tabs-features-underline"
+          className="absolute bottom-0 left-0 right-0 z-10 h-1 bg-accent"
+        />
+      )}
+    </div>
+  );
+};
+
+interface ContactFeatureProps {
+  Icon: IconType;
+  content: React.ReactNode;
+}
+
+const ContactFeature = ({ Icon, content }: ContactFeatureProps) => (
+  <div className="w-full px-0 py-8 md:px-8">
+    <div className="relative h-96 w-full rounded-xl bg-primary shadow-xl overflow-hidden">
+      <div className="flex w-full gap-1.5 rounded-t-xl bg-primary-dark p-3">
+        <div className="h-3 w-3 rounded-full bg-red-500" />
+        <div className="h-3 w-3 rounded-full bg-yellow-500" />
+        <div className="h-3 w-3 rounded-full bg-green-500" />
+      </div>
+      <div className="flex items-center justify-center h-full p-8">
+        <div className="text-center space-y-6">
+          <div className="flex justify-center">
+            <div className="p-6 bg-accent/20 rounded-full">
+              <Icon className="text-6xl text-accent" />
+            </div>
+          </div>
+          {content}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const AddressFeature = () => (
+  <ContactFeature
+    Icon={MapPin}
+    content={
+      <div className="space-y-4 text-white">
+        <h3 className="text-3xl font-bold text-accent">Our Location</h3>
+        <div className="text-lg text-neutral-light space-y-2">
+          <p>Seerani Junction, Keerimalai Road,</p>
+          <p>Sandilipay, Jaffna – 40098,</p>
+          <p>Sri Lanka</p>
+        </div>
+        <p className="text-sm text-neutral-light/80 mt-6">
+          Easily accessible from major attractions in Jaffna
+        </p>
+      </div>
+    }
+  />
+);
+
+const PhoneFeature = () => (
+  <ContactFeature
+    Icon={Phone}
+    content={
+      <div className="space-y-4 text-white">
+        <h3 className="text-3xl font-bold text-accent">Call Us</h3>
+        <div className="text-2xl font-semibold text-neutral-light">
+          <a
+            href="tel:+94701188111"
+            className="text-accent hover:text-accent-light transition-colors"
+          >
+            +94 70 11 88 111
+          </a>
+        </div>
+        <p className="text-sm text-neutral-light/80 mt-6">
+          Available for guest support and bookings
+        </p>
+      </div>
+    }
+  />
+);
+
+const EmailFeature = () => (
+  <ContactFeature
+    Icon={Mail}
+    content={
+      <div className="space-y-4 text-white">
+        <h3 className="text-3xl font-bold text-accent">Email Us</h3>
+        <div className="text-lg font-semibold text-neutral-light">
+          <a
+            href="mailto:jaffnacasasandilipay@gmail.com"
+            className="text-accent hover:text-accent-light transition-colors break-all"
+          >
+            jaffnacasasandilipay@gmail.com
+          </a>
+        </div>
+        <p className="text-sm text-neutral-light/80 mt-6">
+          Send us your booking inquiries and questions
+        </p>
+      </div>
+    }
+  />
+);
+
+const CONTACT_FEATURES = [
+  {
+    title: "Address & Location",
+    Icon: FiMapPin,
+    Feature: () => <AddressFeature />,
+  },
+  {
+    title: "Phone & Call Support",
+    Icon: FiPhone,
+    Feature: () => <PhoneFeature />,
+  },
+  {
+    title: "Email & Inquiries",
+    Icon: FiMail,
+    Feature: () => <EmailFeature />,
+  },
+];
