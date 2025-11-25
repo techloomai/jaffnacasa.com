@@ -50,7 +50,7 @@ export function HeroComingSoon() {
     >
       <div className="relative z-10 flex flex-col items-center">
         <h1 className="max-w-4xl text-center text-4xl font-bold leading-tight sm:text-5xl sm:leading-tight md:text-6xl md:leading-tight lg:text-7xl">
-          <span className="bg-linear-to-br from-white via-neutral-light to-accent bg-clip-text text-transparent">
+          <span className="bg-gradient-to-br from-white via-neutral-light to-accent bg-clip-text text-transparent">
             Jaffna Casa
           </span>
           <br />
