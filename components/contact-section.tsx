@@ -73,7 +73,7 @@ interface TabProps {
   selected: boolean;
   Icon: IconType;
   title: string;
-  setSelected: Function;
+  setSelected: Dispatch<SetStateAction<number>>;
   tabNum: number;
 }
 
