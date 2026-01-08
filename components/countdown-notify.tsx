@@ -213,8 +213,7 @@ const Images = ({ selected }: { selected: "group" | "individual" }) => {
         transition={BASE_TRANSITION}
         className="absolute inset-0 bg-neutral-dark"
         style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80)",
+          backgroundImage: "url(/room-individual.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -227,8 +226,7 @@ const Images = ({ selected }: { selected: "group" | "individual" }) => {
         transition={BASE_TRANSITION}
         className="absolute inset-0 bg-neutral-dark"
         style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80)",
+          backgroundImage: "url(/room-group.jpg)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
