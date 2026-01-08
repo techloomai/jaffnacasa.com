@@ -54,7 +54,7 @@ const Form = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className={`p-8 w-full text-white transition-colors duration-[750ms] ${
+      className={`p-8 w-full text-white transition-colors duration-750 ${
         selected === "group" ? "bg-primary" : "bg-primary-dark"
       }`}
     >
@@ -73,7 +73,7 @@ const Form = ({
           required
           className={`${
             selected === "group" ? "bg-primary-light" : "bg-primary"
-          } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0 focus:ring-2 focus:ring-accent`}
+          } transition-colors duration-750 placeholder-white/70 p-2 rounded-md w-full focus:outline-0 focus:ring-2 focus:ring-accent`}
         />
       </div>
 
@@ -113,7 +113,7 @@ const Form = ({
               required
               className={`${
                 selected === "group" ? "bg-primary-light" : "bg-primary"
-              } transition-colors duration-[750ms] placeholder-white/70 p-2 rounded-md w-full focus:outline-0 focus:ring-2 focus:ring-accent`}
+              } transition-colors duration-750 placeholder-white/70 p-2 rounded-md w-full focus:outline-0 focus:ring-2 focus:ring-accent`}
             />
           </motion.div>
         )}
@@ -131,7 +131,7 @@ const Form = ({
           required
           className={`${
             selected === "group" ? "bg-primary-light" : "bg-primary"
-          } transition-colors duration-[750ms] min-h-[150px] resize-none placeholder-white/70 p-2 rounded-md w-full focus:outline-0 focus:ring-2 focus:ring-accent`}
+          } transition-colors duration-750 min-h-[150px] resize-none placeholder-white/70 p-2 rounded-md w-full focus:outline-0 focus:ring-2 focus:ring-accent`}
         />
       </div>
 
@@ -149,7 +149,7 @@ const Form = ({
           selected === "group"
             ? "bg-accent text-primary hover:bg-accent-light"
             : "bg-accent text-primary hover:bg-accent-light"
-        } transition-colors duration-[750ms] text-lg text-center rounded-lg w-full py-3 font-semibold disabled:opacity-50`}
+        } transition-colors duration-750 text-lg text-center rounded-lg w-full py-3 font-semibold disabled:opacity-50`}
       >
         {submitted ? "Message Sent!" : "Send Inquiry"}
       </motion.button>
@@ -165,12 +165,12 @@ const FormSelect = ({
   setSelected: Dispatch<SetStateAction<"group" | "individual">>;
 }) => {
   return (
-    <div className="border-[1px] rounded border-white overflow-hidden font-medium w-fit">
+    <div className="border rounded border-white overflow-hidden font-medium w-fit">
       <button
         type="button"
         className={`${
           selected === "individual" ? "text-primary-dark" : "text-white"
-        } text-sm px-3 py-1.5 transition-colors duration-[750ms] relative`}
+        } text-sm px-3 py-1.5 transition-colors duration-750 relative`}
         onClick={() => setSelected("individual")}
       >
         <span className="relative z-10">Individual / Family</span>
@@ -186,7 +186,7 @@ const FormSelect = ({
         type="button"
         className={`${
           selected === "group" ? "text-primary" : "text-white"
-        } text-sm px-3 py-1.5 transition-colors duration-[750ms] relative`}
+        } text-sm px-3 py-1.5 transition-colors duration-750 relative`}
         onClick={() => setSelected("group")}
       >
         <span className="relative z-10">Group / Company</span>

@@ -85,7 +85,7 @@ const Tab = ({ selected, Icon, title, setSelected, tabNum }: TabProps) => {
         className="relative z-0 flex w-full flex-row items-center justify-center gap-4 border-b-4 border-neutral-dark bg-white p-6 transition-colors hover:bg-neutral-light md:flex-col"
       >
         <span
-          className={`rounded-lg bg-gradient-to-br from-primary from-10% to-primary-dark p-3 text-2xl text-white shadow-accent/30 transition-all duration-300 ${
+          className={`rounded-lg bg-linear-to-br from-primary from-10% to-primary-dark p-3 text-2xl text-white shadow-accent/30 transition-all duration-300 ${
             selected
               ? "scale-100 opacity-100 shadow-lg"
               : "scale-90 opacity-50 shadow"
