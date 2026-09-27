@@ -213,7 +213,7 @@ const Images = ({ selected }: { selected: "group" | "individual" }) => {
         transition={BASE_TRANSITION}
         className="absolute inset-0 bg-neutral-dark"
         style={{
-          backgroundImage: "url(/room-individual.jpg)",
+          backgroundImage: "url(/img2.png)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
